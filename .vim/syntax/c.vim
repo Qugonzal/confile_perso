@@ -493,15 +493,22 @@ hi def link	cCustomFunc  		Function
 syn match	cBadContinuation 	"\s\+$"
 
 " Highlight some symboles
-hi def cYellowSym  ctermfg=190
-hi def cLRedSym  ctermfg=225
-hi def cLGreenSym  ctermfg=154
-syn match	cLGreenSym	"++"
-syn match	cLGreenSym	"--"
+hi def cYellowSym  ctermfg=227
+hi def cLPurpleSym  ctermfg=105
+hi def cLRedSym  ctermfg=209
+hi def cLGreenSym  ctermfg=119
 syn match	cYellowSym	"&&"
 syn match	cYellowSym	"||"
-syn match	cLRedSym	"&" contains=cYellowSym
-syn match	cLRedSym	"|" contains=cYellowSym
+syn match	cLPurpleSym	"\s&\s"
+syn match	cLPurpleSym	"\s|\s"
+syn match	cLPurpleSym	"\s^\s"
+syn match	cLGreenSym	"++"
+syn match	cLGreenSym	"--"
+syn match	cLRedSym	"+"
+syn match	cLRedSym	"-"
+syn match	cLRedSym	"\s\*\s"
+syn match	cLRedSym	"\\"
+syn match	cLRedSym	"\%"
 
 " Highlight structures
 hi def cBlueSym  ctermfg=14
