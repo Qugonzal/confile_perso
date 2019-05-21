@@ -487,39 +487,63 @@ hi def link cCppOut		Comment
 " Highlight Function names
 syn match    	cCustomParen    	"(" contains=cParen
 syn match   	cCustomFunc     	"\w\+\s*(" contains=cCustomParen
-hi def link	cCustomFunc  		Function
+hi def	cCustomFunc  		ctermfg=37
 
 " Highlight spaces at the end of line
 syn match	cBadContinuation 	"\s\+$"
 
 " Highlight some symboles
-hi def cYellowSym  ctermfg=227
-hi def cLPurpleSym  ctermfg=105
-hi def cLRedSym  ctermfg=209
-hi def cLGreenSym  ctermfg=119
-syn match	cYellowSym	"&&"
-syn match	cYellowSym	"||"
-syn match	cLPurpleSym	"\s&\s"
-syn match	cLPurpleSym	"\s|\s"
-syn match	cLPurpleSym	"\s^\s"
-syn match	cLGreenSym	"++"
-syn match	cLGreenSym	"--"
-syn match	cLRedSym	"+"
-syn match	cLRedSym	"-"
-syn match	cLRedSym	"\s\*\s"
-syn match	cLRedSym	"\\"
-syn match	cLRedSym	"\%"
+hi def cYellowSym  ctermfg=226
+hi def cOrangeSym  ctermfg=202
+hi def cRedSym  ctermfg=196
+hi def cLPurpleSym  ctermfg=99
+hi def cLGreenSym  ctermfg=47
+hi def cGreenSym  ctermfg=22
+hi def cLPinkSym  ctermfg=205
+syn match	cRedSym		"!" contains=cCommentGroup
+syn match	cOrangeSym	"!=" contains=cCommentGroup
+syn match	cOrangeSym	"==" contains=cCommentGroup
+syn match	cOrangeSym	">=" contains=cCommentGroup
+syn match	cOrangeSym	"<=" contains=cCommentGroup
+syn match	cOrangeSym	"\s>\s" contains=cCommentGroup
+syn match	cOrangeSym	"\s<\s" contains=cCommentGroup
+syn match	cYellowSym	"&&" contains=cCommentGroup
+syn match	cYellowSym	"||" contains=cCommentGroup
+syn match	cLPurpleSym	"\s<<\s" contains=cCommentGroup
+syn match	cLPurpleSym	"\s>>\s" contains=cCommentGroup
+syn match	cLPurpleSym	"\s&\s" contains=cCommentGroup
+syn match	cLPurpleSym	"\s&="me=e-1 contains=cCommentGroup
+syn match	cLPurpleSym	"\s|\s" contains=cCommentGroup
+syn match	cLPurpleSym	"\s|="me=e-1 contains=cCommentGroup
+syn match	cLPurpleSym	"\s^\s" contains=cCommentGroup
+syn match	cLPurpleSym	"\s^="me=e-1 contains=cCommentGroup
+syn match	cLGreenSym	"\s+\s" contains=cCommentGroup
+syn match	cLGreenSym	"\s+="me=e-1 contains=cCommentGroup
+syn match	cLGreenSym	"\s-\s" contains=cCommentGroup
+syn match	cLGreenSym	"\s-="me=e-1 contains=cCommentGroup
+syn match	cLGreenSym	"\s\*\s" contains=cCommentGroup
+syn match	cLGreenSym	"\s\*="me=e-1 contains=cCommentGroup
+syn match	cLGreenSym	"\s/\s" contains=cCommentGroup
+syn match	cLGreenSym	"\s/="me=e-1 contains=cCommentGroup
+syn match	cLGreenSym	"\s%\s" contains=cCommentGroup
+syn match	cLGreenSym	"\s%="me=e-1 contains=cCommentGroup
+syn match	cGreenSym	"++" contains=cCommentGroup
+syn match	cGreenSym	"--" contains=cCommentGroup
+syn match	cLPinkSym	"&\((\|\w\)"me=e-1 contains=cCommentGroup
+syn match	cLPinkSym	"\*\+\((\|\w\|)\)"me=e-1 contains=cCommentGroup
 
 " Highlight structures
 hi def cBlueSym  ctermfg=14
-hi def cGreySym  ctermfg=242
+hi def cGreySym  ctermfg=245
 syn match	cGreySym	"\(\n\|\s\|\<\)t_\w\+"
 syn match	cBlueSym	"->"
 syn match	cGreySym	"\w\+->" contains=cBlueSym
-syn match	cGreySym	"\w\+\(-0-\|\[.\+\]\)\->"me=e-4 contains=cBlueSym
+syn match	cGreySym	"\w\+\(-0-\|\[.\+\]\)\->"me=e-5 contains=cBlueSym
+syn match	cGreySym	"\w\+\()\)\->"me=e-3 contains=cBlueSym
 syn match	cBlueSym	"\."
 syn match	cGreySym	"\w\+\." contains=cBlueSym
 syn match	cGreySym	"\w\+\(-0-\|\[.\+\]\)\."me=e-4 contains=cBlueSym
+syn match	cGreySym	"\w\+\()\)\."me=e-2 contains=cBlueSym
 
 " ****************************************
 
