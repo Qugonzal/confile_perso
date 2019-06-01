@@ -533,17 +533,22 @@ syn match	cLPinkSym	"&\((\|\w\)"me=e-1 contains=cCommentGroup
 syn match	cLPinkSym	"\*\+\((\|\w\|)\)"me=e-1 contains=cCommentGroup
 
 " Highlight structures
+syn match	VisualNOS	"\[\w\+\]" contains=cNumber
+
 hi def cBlueSym  ctermfg=14
 hi def cGreySym  ctermfg=245
+
 syn match	cGreySym	"\(\n\|\s\|\<\)t_\w\+"
+
 syn match	cBlueSym	"->"
 syn match	cGreySym	"\w\+->" contains=cBlueSym
-syn match	cGreySym	"\w\+\(-0-\|\[.\+\]\)\->"me=e-5 contains=cBlueSym
-syn match	cGreySym	"\w\+\()\)\->"me=e-3 contains=cBlueSym
+syn match	cGreySym	"\w\+\[.\+\]\->" contains=VisualNOS,cBlueSym
+syn match	cGreySym	"\w\+)\->"me=e-3 contains=cBlueSym
+
 syn match	cBlueSym	"\."
 syn match	cGreySym	"\w\+\." contains=cBlueSym
-syn match	cGreySym	"\w\+\(-0-\|\[.\+\]\)\."me=e-4 contains=cBlueSym
-syn match	cGreySym	"\w\+\()\)\."me=e-2 contains=cBlueSym
+syn match	cGreySym	"\w\+\[.\+\]\." contains=VisualNOS,cBlueSym
+syn match	cGreySym	"\w\+)\."me=e-2 contains=cBlueSym
 
 " ****************************************
 
