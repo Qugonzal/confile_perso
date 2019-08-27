@@ -542,12 +542,12 @@ syn match	cGreySym	"\(\n\|\s\|\<\)t_\w\+"
 
 syn match	cBlueSym	"->"
 syn match	cGreySym	"\w\+->" contains=cBlueSym
-syn match	cGreySym	"\w\+\[.\+\]\->" contains=VisualNOS,cBlueSym
+syn match	cGreySym	"\w\+\[.\+\]\(\|\[.\+\]\)\->" contains=VisualNOS,cBlueSym
 syn match	cGreySym	"\w\+)\->"me=e-3 contains=cBlueSym
 
 syn match	cBlueSym	"\."
 syn match	cGreySym	"\w\+\." contains=cBlueSym
-syn match	cGreySym	"\w\+\[.\+\]\." contains=VisualNOS,cBlueSym
+syn match	cGreySym	"\w\+\[.\+\]\(\|\[.\+\]\)\." contains=VisualNOS,cBlueSym
 syn match	cGreySym	"\w\+)\."me=e-2 contains=cBlueSym
 
 " ****************************************
