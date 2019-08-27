@@ -1,12 +1,15 @@
 ":set nocompatible
 :syntax on
+highlight OverLength ctermbg=darkred ctermfg=white guibg=#FFD9D9 
+match OverLength /\%>80v.\+/ "highlight anything that exceed column 80
+:set tabstop=4 "force tabulation size to 4 spaces
+:set shiftwidth=4 "force indentation size to 4 spacesi
 :set autoindent
 :set smartindent
 :set nu
 :set rnu
 :set visualbell
 :set mouse=a
-:set cc=80
 
 :set wildmenu
 :set wildmode=list:longest
@@ -14,24 +17,23 @@
 ":set hidden
 
 ":::::::::: MACRO MAPPING KEYS ::::::::::
-"##### Mode Normal #####
-:nmap <backspace> 	<left><del>
-:nmap <return> 		i<return><esc>
+"##### Normal Mode #####
+:nmap <backspace> <left><del>
+:nmap <return> i<return><esc>
 
-:nmap <S-up> 		:bn<return>
-:nmap <S-down> 		:bp<return>
+:nmap <S-up> :bn<return>
+:nmap <S-down> :bp<return>
 
-:nmap <S-right> 	<C-w>w
-:nmap <S-left> 		<C-w>W
+:nmap <S-right> <C-w>w
+:nmap <S-left> <C-w>W
 
-:nmap T 		:vsplit<return>
+:nmap T :vsplit<return>
 
-"##### Mode insertion #####
-:inoremap	" 	""<left>
-:inoremap	( 	()<left>
-:inoremap	[ 	[]<left>
+"##### Insert Mode #####
+:inoremap " ""<left>
+:inoremap ( ()<left>
+:inoremap [ []<left>
 
-:inoremap	{{ 	{<return><return>}<up><tab>
+:inoremap {{ {<return><return>}<up><tab>
 
-:imap 		<C-y> 	<esc>yypi
-
+:imap <C-c> yyp
