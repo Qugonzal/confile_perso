@@ -18,6 +18,8 @@ match OverLength /\%>80v.\+/ "highlight anything that exceed column 80
 
 ":::::::::: MACRO MAPPING KEYS ::::::::::
 "##### Normal Mode #####
+:nmap t bvw<LEFT>"ty:stag <C-R>t<RETURN>
+
 :nmap <backspace> <left><del>
 :nmap <return> i<return><esc>
 
