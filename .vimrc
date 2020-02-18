@@ -8,7 +8,7 @@ match OverLength /\%>80v.\+/ "highlight anything that exceed column 80
 :set smartindent
 :set nu
 :set rnu
-:set visualbell
+":set visualbell
 :set mouse=a
 
 :set wildmenu
@@ -19,13 +19,16 @@ match OverLength /\%>80v.\+/ "highlight anything that exceed column 80
 
 ":::::::::: MACRO MAPPING KEYS ::::::::::
 "##### Normal Mode #####
-:nmap	t						bvw<LEFT>"ty:stag <C-R>t<RETURN>
+:nmap	t						bvw<LEFT>"ty:tag <C-R>t<RETURN>
+:nmap	rt						bvw<LEFT>"ty:stag <C-R>t<RETURN>
 
 :nmap	<backspace>				<left><del>
 :nmap	<return> 				i<return><esc>
 
 :nmap	<S-up>					:bn<return>
 :nmap	<S-down>				:bp<return>
+:nmap	<						:bd<return>:vsp<return>
+:nmap	>						:w<return>:vsp<return><C-w>w:bd<return>
 
 :nmap	<S-left>				<C-w>W
 :nmap	<S-right>				<C-w>w
