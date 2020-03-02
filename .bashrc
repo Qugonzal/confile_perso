@@ -5,3 +5,4 @@ alias gw="gcc -Wall -Wextra -Werror"
 alias gcl="git clone"
 alias gcm="git commit -m \""
 alias v=vim
+alias cl=clear
