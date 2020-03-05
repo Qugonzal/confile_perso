@@ -7,5 +7,5 @@ alias gcm="git commit -m "
 alias v=vim
 alias cl=clear
 
-#autoload -Uz pormptinit && promptinit
+#autoload -Uz promptinit && promptinit
 #prompt adam2
