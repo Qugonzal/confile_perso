@@ -6,3 +6,6 @@ alias gcl="git clone"
 alias gcm="git commit -m "
 alias v=vim
 alias cl=clear
+
+#autoload -Uz pormptinit && promptinit
+#prompt adam2
