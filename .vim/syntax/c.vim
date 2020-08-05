@@ -68,18 +68,18 @@ syn region	cCppSkip	contained start="^\s*\(%:\|#\)\s*\(if\>\|ifdef\>\|ifndef\>\)
 
 syn cluster	cStringGroup	contains=cCppString,cCppSkip
 
-syn match	cCharacter	"L\='[^\\]'"
-syn match	cCharacter	"L'[^']*'" contains=cSpecial
+syn match	cCharacter	"L\='[^\\]'"me=e-1,ms=s+1
+syn match	cCharacter	"L'[^']*'"me=e-1,ms=s+1 contains=cSpecial
 if exists("c_gnu")
-  syn match	cSpecialError	"L\='\\[^'\"?\\abefnrtv]'"
-  syn match	cSpecialCharacter "L\='\\['\"?\\abefnrtv]'"
+  syn match	cSpecialError	"L\='\\[^'\"?\\abefnrtv]'"me=e-1,ms=s+1
+  syn match	cSpecialCharacter "L\='\\['\"?\\abefnrtv]'"me=e-1,ms=s+1
 else
-  syn match	cSpecialError	"L\='\\[^'\"?\\abfnrtv]'"
-  syn match	cSpecialCharacter "L\='\\['\"?\\abfnrtv]'"
+  syn match	cSpecialError	"L\='\\[^'\"?\\abfnrtv]'"me=e-1,ms=s+1
+  syn match	cSpecialCharacter "L\='\\['\"?\\abfnrtv]'"me=e-1,ms=s+1
 endif
-syn match	cSpecialCharacter display "L\='\\\o\{1,3}'"
-syn match	cSpecialCharacter display "'\\x\x\{1,2}'"
-syn match	cSpecialCharacter display "L'\\x\x\+'"
+syn match	cSpecialCharacter display "L\='\\\o\{1,3}'"me=e-1,ms=s+1
+syn match	cSpecialCharacter display "'\\x\x\{1,2}'"me=e-1,ms=s+1
+syn match	cSpecialCharacter display "L'\\x\x\+'"me=e-1,ms=s+1
 
 if (s:ft ==# "c" && !exists("c_no_c11")) || (s:ft ==# "cpp" && !exists("cpp_no_cpp11"))
   " ISO C11 or ISO C++ 11
@@ -484,6 +484,10 @@ hi def link cCppOut		Comment
 
 
 " **********PERSONAL_EDIT*****************
+"highlight anything that exceed column 80 (42's norm)
+highlight OverLength ctermbg=darkred ctermfg=white guibg=#FFD9D9 
+match OverLength /\%>80v.\+/
+
 " Highlight Function names
 syn match    	cCustomParen    	"(" contains=cParen
 syn match   	cCustomFunc     	"\w\+\s*(" contains=cCustomParen
@@ -500,6 +504,10 @@ hi def cLPurpleSym  ctermfg=99
 hi def cLGreenSym  ctermfg=47
 hi def cGreenSym  ctermfg=22
 hi def cLPinkSym  ctermfg=205
+hi def LightCoral  ctermfg=210
+hi def LightGolden  ctermfg=222
+syn region	LightCoral	start=+\%(L\|U\|u8\)\="+ skip=+\\\\\|\\"\|\\$+ excludenl end=+"+ end='$' contains=cSpecial,cFormat,@Spell
+syn region	LightGolden	start=+\%(L\|U\|u8\)\='+ skip=+\\\\\|\\"\|\\$+ excludenl end=+'+ end='$' contains=cSpecial,cSpecialCharacter,cSpecialError,cFormat,@Spell
 syn match	cRedSym		"!" contains=cCommentGroup
 syn match	cOrangeSym	"!=" contains=cCommentGroup
 syn match	cOrangeSym	"==" contains=cCommentGroup
@@ -527,16 +535,17 @@ syn match	cLGreenSym	"\s/\s" contains=cCommentGroup
 syn match	cLGreenSym	"\s/="me=e-1 contains=cCommentGroup
 syn match	cLGreenSym	"\s%\s" contains=cCommentGroup
 syn match	cLGreenSym	"\s%="me=e-1 contains=cCommentGroup
-syn match	cGreenSym	"++" contains=cCommentGroup
+syn match	cGreenSym	"++" contains=CommentGroup
 syn match	cGreenSym	"--" contains=cCommentGroup
 syn match	cLPinkSym	"&\((\|\w\)"me=e-1 contains=cCommentGroup
 syn match	cLPinkSym	"\*\+\((\|\w\|)\)"me=e-1 contains=cCommentGroup
 
 " Highlight structures
-syn match	VisualNOS	"\[\w\+\]" contains=cNumber
-
+hi def NONO 	 ctermfg=159
 hi def cBlueSym  ctermfg=14
 hi def cGreySym  ctermfg=245
+
+syn match	NONO		"\[\(\|[ -/]\+\)\w\+\(\|[ -/]\+\w\+\|[ -/]\+\)\]" contains=cBlueSym,cNumber,cNumbers,cFloat,CommentGroup,cGreenSym,cLGreenSym
 
 syn match	cGreySym	"\(\n\|\s\|\<\)t_\w\+"
 
@@ -546,8 +555,8 @@ syn match	cGreySym	"\w\+\[.\+\]\(\|\[.\+\]\)\->" contains=VisualNOS,cBlueSym
 syn match	cGreySym	"\w\+)\->"me=e-3 contains=cBlueSym
 
 syn match	cBlueSym	"\."
-syn match	cGreySym	"\w\+\." contains=cBlueSym,VisualNOS,cNumber,cNumbers,cFloat
-syn match	cGreySym	"\w\+\[.\+\]\(\|\[.\+\]\)\." contains=VisualNOS,cBlueSym
+syn match	cGreySym	"\w\+\."  contains=cBlueSym,VisualNOS,cNumber,cNumbers,cFloat,CommentGroup,cGreenSym,cLGreenSym,NONO
+syn match	cGreySym	"\w\+\[\(\|[ -/]\+\)\w\+\(\|[ -/]\+\|[ -/]\+\w\+\)\]\(\|\[\(\|[ -/]\+\)\w\+\(\|[ -/]\+\|[ -/]\+\w\+\)\]\)\(\|\[.\+\]\)\." contains=cBlueSym,VisualNOS,cNumber,cNumbers,cFloat,CommentGroup,cGreenSym,cLGreenSym,NONO
 syn match	cGreySym	"\w\+)\."me=e-2 contains=cBlueSym
 
 " ****************************************
