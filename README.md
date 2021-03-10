@@ -2,6 +2,7 @@
 My personnal config files for Vim & Bash.
 
 'bashrc' is used when you run Bash.
+
 'vimrc' is used when you run Vim.
 
 'c.vim' is a syntax file that is used only when you open a '.c' file (or '.h').
