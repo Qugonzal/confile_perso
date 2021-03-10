@@ -1,5 +1,6 @@
 # confile_perso
 My personnal config files for Vim & Bash.
+
 'bashrc' is used when you run Bash.
 'vimrc' is used when you run Vim.
 
